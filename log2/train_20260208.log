@@ -1,0 +1,188 @@
+2026-02-08 15:46:45,798 - train - INFO - Training started at 2026-02-08 15:46:45
+2026-02-08 15:46:45,813 - train - INFO - Train data loaded: (1100, 31), Test data loaded: (350, 31)
+2026-02-08 15:46:45,821 - train - INFO - Train data info: None
+2026-02-08 15:46:45,872 - train - INFO - Train data description:          Attrition          Age  ...  YearsSinceLastPromotion  YearsWithCurrManager
+count  1100.000000  1100.000000  ...              1100.000000           1100.000000
+mean      0.161818    36.999091  ...                 2.226364              4.123636
+std       0.368451     9.037230  ...                 3.313830              3.597996
+min       0.000000    18.000000  ...                 0.000000              0.000000
+25%       0.000000    30.000000  ...                 0.000000              2.000000
+50%       0.000000    36.000000  ...                 1.000000              3.000000
+75%       0.000000    43.000000  ...                 3.000000              7.000000
+max       1.000000    60.000000  ...                15.000000             17.000000
+
+[8 rows x 23 columns]
+2026-02-08 15:46:47,691 - train - INFO - Categorical features distribution saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\categorical_features_distribution.png
+2026-02-08 15:46:49,810 - train - INFO - Numerical features distribution saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\numerical_features_distribution.png
+2026-02-08 15:46:49,810 - train - INFO - Overall attrition rate: 0.1618
+2026-02-08 15:46:51,212 - train - INFO - Attrition rate by features saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\attrition_rate_by_features.png
+2026-02-08 15:46:51,851 - train - INFO - Correlation matrix saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\correlation_matrix.png
+2026-02-08 15:46:51,884 - train - INFO - 
+============================================================
+SURVIVAL ANALYSIS (Cox PH Model)
+============================================================
+2026-02-08 15:46:51,887 - train - INFO -                             Results: PHReg
+=======================================================================
+Model:                     PH Reg               Sample size:       1100
+Dependent variable:        YearsAtCompany       Num. events:       178 
+Ties:                      Breslow                                     
+-----------------------------------------------------------------------
+                  log HR log HR SE   HR      t    P>|t|  [0.025  0.975]
+-----------------------------------------------------------------------
+Age              -0.0585    0.0118 0.9432 -4.9515 0.0000 0.9216  0.9653
+MonthlyIncome    -0.0002    0.0000 0.9998 -5.8487 0.0000 0.9998  0.9999
+OverTime          1.8491    0.3718 6.3543  4.9732 0.0000 3.0660 13.1693
+BusinessTravel    0.5542    0.2104 1.7406  2.6343 0.0084 1.1524  2.6289
+SatisfactionMean -0.5684    0.1132 0.5664 -5.0201 0.0000 0.4537  0.7072
+OT_Travel        -0.5037    0.2778 0.6043 -1.8132 0.0698 0.3506  1.0416
+=======================================================================
+Confidence intervals are for the hazard ratios
+2026-02-08 15:46:51,903 - train - INFO - RiskScore added! Train mean: -3.9067, Test mean: -3.8536
+2026-02-08 15:46:51,933 - train - INFO - Final feature dim: 48
+2026-02-08 15:46:54,168 - train - INFO - After SMOTE: (1844, 48), Positive ratio: 0.500
+2026-02-08 15:47:03,937 - train - INFO - Best LGB Params: {'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 200}
+2026-02-08 15:47:03,938 - train - INFO - LGB Best CV Score: 0.8649
+2026-02-08 15:47:07,404 - train - INFO - Best XGB Params: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+2026-02-08 15:47:07,404 - train - INFO - XGB Best CV Score: 0.8698
+2026-02-08 15:47:07,682 - train - INFO - 
+============================================================
+INDIVIDUAL MODEL EVALUATION
+============================================================
+2026-02-08 15:47:07,688 - train - INFO - 
+--- LightGBM Model Evaluation ---
+2026-02-08 15:47:07,689 - train - INFO - Accuracy: 0.8629
+2026-02-08 15:47:07,692 - train - INFO - Precision: 0.5556
+2026-02-08 15:47:07,695 - train - INFO - Recall: 0.4717
+2026-02-08 15:47:07,697 - train - INFO - F1 Score: 0.5102
+2026-02-08 15:47:07,699 - train - INFO - ROC AUC: 0.8080
+2026-02-08 15:47:07,699 - train - INFO - 
+Classification Report:
+2026-02-08 15:47:07,706 - train - INFO -               precision    recall  f1-score   support
+
+           0       0.91      0.93      0.92       297
+           1       0.56      0.47      0.51        53
+
+    accuracy                           0.86       350
+   macro avg       0.73      0.70      0.72       350
+weighted avg       0.85      0.86      0.86       350
+
+2026-02-08 15:47:07,711 - train - INFO - 
+--- XGBoost Model Evaluation ---
+2026-02-08 15:47:07,712 - train - INFO - Accuracy: 0.8657
+2026-02-08 15:47:07,715 - train - INFO - Precision: 0.5833
+2026-02-08 15:47:07,718 - train - INFO - Recall: 0.3962
+2026-02-08 15:47:07,720 - train - INFO - F1 Score: 0.4719
+2026-02-08 15:47:07,722 - train - INFO - ROC AUC: 0.8333
+2026-02-08 15:47:07,722 - train - INFO - 
+Classification Report:
+2026-02-08 15:47:07,730 - train - INFO -               precision    recall  f1-score   support
+
+           0       0.90      0.95      0.92       297
+           1       0.58      0.40      0.47        53
+
+    accuracy                           0.87       350
+   macro avg       0.74      0.67      0.70       350
+weighted avg       0.85      0.87      0.85       350
+
+2026-02-08 15:47:07,985 - train - INFO - 
+--- Logistic Regression Model Evaluation ---
+2026-02-08 15:47:07,986 - train - INFO - Accuracy: 0.6886
+2026-02-08 15:47:07,988 - train - INFO - Precision: 0.2778
+2026-02-08 15:47:07,990 - train - INFO - Recall: 0.6604
+2026-02-08 15:47:07,992 - train - INFO - F1 Score: 0.3911
+2026-02-08 15:47:07,993 - train - INFO - ROC AUC: 0.7624
+2026-02-08 15:47:07,993 - train - INFO - 
+Classification Report:
+2026-02-08 15:47:07,999 - train - INFO -               precision    recall  f1-score   support
+
+           0       0.92      0.69      0.79       297
+           1       0.28      0.66      0.39        53
+
+    accuracy                           0.69       350
+   macro avg       0.60      0.68      0.59       350
+weighted avg       0.82      0.69      0.73       350
+
+2026-02-08 15:47:08,019 - train - INFO - 
+--- Random Forest Model Evaluation ---
+2026-02-08 15:47:08,020 - train - INFO - Accuracy: 0.8457
+2026-02-08 15:47:08,022 - train - INFO - Precision: 0.4878
+2026-02-08 15:47:08,024 - train - INFO - Recall: 0.3774
+2026-02-08 15:47:08,026 - train - INFO - F1 Score: 0.4255
+2026-02-08 15:47:08,027 - train - INFO - ROC AUC: 0.8067
+2026-02-08 15:47:08,027 - train - INFO - 
+Classification Report:
+2026-02-08 15:47:08,033 - train - INFO -               precision    recall  f1-score   support
+
+           0       0.89      0.93      0.91       297
+           1       0.49      0.38      0.43        53
+
+    accuracy                           0.85       350
+   macro avg       0.69      0.65      0.67       350
+weighted avg       0.83      0.85      0.84       350
+
+2026-02-08 15:47:09,462 - train - INFO - Best Threshold (F1): 0.490 | Val F1: 0.9157
+2026-02-08 15:47:09,485 - train - INFO - 
+============================================================
+ENSEMBLE MODEL EVALUATION
+============================================================
+2026-02-08 15:47:09,486 - train - INFO - 
+--- Ensemble Model Evaluation (Threshold: 0.490) ---
+2026-02-08 15:47:09,487 - train - INFO - Accuracy: 0.8514
+2026-02-08 15:47:09,490 - train - INFO - Precision: 0.5106
+2026-02-08 15:47:09,492 - train - INFO - Recall: 0.4528
+2026-02-08 15:47:09,495 - train - INFO - F1 Score: 0.4800
+2026-02-08 15:47:09,497 - train - INFO - ROC AUC: 0.8165
+2026-02-08 15:47:09,497 - train - INFO - 
+Classification Report:
+2026-02-08 15:47:09,506 - train - INFO -               precision    recall  f1-score   support
+
+           0       0.90      0.92      0.91       297
+           1       0.51      0.45      0.48        53
+
+    accuracy                           0.85       350
+   macro avg       0.71      0.69      0.70       350
+weighted avg       0.84      0.85      0.85       350
+
+2026-02-08 15:47:09,507 - train - INFO - 
+Confusion Matrix:
+2026-02-08 15:47:09,508 - train - INFO - True Negatives: 274
+2026-02-08 15:47:09,508 - train - INFO - False Positives: 23
+2026-02-08 15:47:09,508 - train - INFO - False Negatives: 29
+2026-02-08 15:47:09,508 - train - INFO - True Positives: 24
+2026-02-08 15:47:09,508 - train - INFO - 
+============================================================
+MODEL COMPARISON SUMMARY
+============================================================
+2026-02-08 15:47:09,508 - train - INFO - Model                Accuracy     Precision    Recall       F1 Score     ROC AUC     
+2026-02-08 15:47:09,508 - train - INFO - --------------------------------------------------------------------------------
+2026-02-08 15:47:09,519 - train - INFO - LightGBM             0.8629       0.5556       0.4717       0.5102       0.8080      
+2026-02-08 15:47:09,529 - train - INFO - XGBoost              0.8657       0.5833       0.3962       0.4719       0.8333      
+2026-02-08 15:47:09,540 - train - INFO - Logistic Regression  0.6886       0.2778       0.6604       0.3911       0.7624      
+2026-02-08 15:47:09,550 - train - INFO - Random Forest        0.8457       0.4878       0.3774       0.4255       0.8067      
+2026-02-08 15:47:09,560 - train - INFO - Ensemble             0.8514       0.5106       0.4528       0.4800       0.8165      
+2026-02-08 15:47:09,570 - train - INFO - 
+============================================================
+POST-PROCESSING EVALUATION
+============================================================
+2026-02-08 15:47:09,571 - train - INFO - 
+--- After Post-Processing (Rule-based Adjustment) ---
+2026-02-08 15:47:09,571 - train - INFO - Accuracy: 0.8543
+2026-02-08 15:47:09,573 - train - INFO - Precision: 0.5200
+2026-02-08 15:47:09,575 - train - INFO - Recall: 0.4906
+2026-02-08 15:47:09,577 - train - INFO - F1 Score: 0.5049
+2026-02-08 15:47:09,577 - train - INFO - 
+Confusion Matrix (After Post-Processing):
+2026-02-08 15:47:09,578 - train - INFO - True Negatives: 273
+2026-02-08 15:47:09,578 - train - INFO - False Positives: 24
+2026-02-08 15:47:09,578 - train - INFO - False Negatives: 27
+2026-02-08 15:47:09,578 - train - INFO - True Positives: 26
+2026-02-08 15:47:09,582 - train - INFO - Predictions saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\data2\submission_ultimate.csv
+2026-02-08 15:47:10,115 - train - INFO - Feature importance saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\feature_importance.png
+2026-02-08 15:47:10,453 - train - INFO - Grid search plot saved: D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\grid_search_lgb.png
+2026-02-08 15:47:10,650 - train - INFO - Grid search plot saved: D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\grid_search_xgb.png
+2026-02-08 15:47:10,965 - train - INFO - Threshold tuning plot saved: D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\threshold_tuning.png
+2026-02-08 15:47:11,161 - train - INFO - True vs Predicted plot saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\true_vs_pred.png
+2026-02-08 15:47:12,023 - train - INFO - Model metrics comparison saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\model_metrics_comparison.png
+2026-02-08 15:47:12,240 - train - INFO - ROC AUC comparison saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\fit2\roc_auc_comparison.png
+2026-02-08 15:47:12,240 - train - INFO - Models saved to D:\xwechat_files\wxid_54j2g91ynemf22_2cc9\msg\file\2026-02\HR-Project\model2
+2026-02-08 15:47:12,240 - train - INFO - Training completed at 2026-02-08 15:47:12
